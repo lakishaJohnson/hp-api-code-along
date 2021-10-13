@@ -54,11 +54,17 @@ fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
             }
         }
     })
+    //STEP 4 <------------------ADD SELECTED CHARACTER'S NAME TO TEAM MEMBERS LIST ON BUTTON CLICK------------------------>
+    const membersUL = document.querySelector("#members")
+    let addBut = document.querySelector("#addButton") 
+
+    addBut.addEventListener("click", () => {
+        //what happens after button is clicked...
+        //creates a new tag
+        let newMember = document.createElement("li")
+        //adds content to new tag
+        newMember.textContent = selectedCharacter.name
+        //appends li to ul
+        membersUL.append(newMember)
+    })
 });
-
-    
-
-
-
-
-//STEP 4 <------------------ADD SELECTED CHARACTER'S NAME TO TEAM MEMBERS LIST ON BUTTON CLICK------------------------>

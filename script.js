@@ -25,10 +25,38 @@ fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
         dropDown.append(option);
     }
     //STEP 3 <--------------------------------DISPLAY SELECTED CHARACTER'S INFO------------------------------------------->
-    
-    
-    
+    //now we have access to all of the elements that we need to manipulate.
+    let currentName = document.querySelector("#name")
+    const dob = document.querySelector("#dob")
+    const patronus = document.querySelector("#patronus")
+    const headshot = document.querySelector("#headshot")
+
+    //variable to hold dropDown selection from data, which will change, that's why it's an empty string
+    let selectedCharacter
+
+    //make an eventListener for when dropDown changes, data is updated
+    dropDown.addEventListener("change", () => {
+        //what happens after change is made...
+        //loop thru js object
+        for (let character of characters) {
+            if(dropDown.value === character.name) {
+                selectedCharacter = character
+                
+                //console log just to see if code works properly
+                console.log(character)
+                
+                //grabbing selectedCharacter and adds   
+                currentName.textContent = character.name;
+                dob.textContent = character.dateOfBirth;
+                patronus.textContent = character.patronus;
+                //for adding an image
+                headshot.src = character.image;
+            }
+        }
+    })
 });
+
+    
 
 
 
